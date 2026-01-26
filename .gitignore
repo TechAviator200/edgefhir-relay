@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+ui/node_modules/
+ui/.next/
+ui/out/
+ui/.env.local
+ui/.env.production
+ui/tsconfig.tsbuildinfo
+
+.DS_Store
