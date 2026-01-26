@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
-const EDGE_URL =
-  process.env.EDGE_URL?.replace(/\/$/, "") || "http://127.0.0.1:8000";
+const EDGE_URL = "https://edgefhir-relay-1.onrender.com";
 
 const nextConfig: NextConfig = {
   async rewrites() {
