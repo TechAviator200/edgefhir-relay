@@ -74,6 +74,24 @@ A desaturation event triggers elevated triage. SpO2 drops below 92%, confidence 
 | `POST` | `/connectivity/{on\|off}` | Toggle connectivity + auto-retry |
 | `POST` | `/flush` | Manually flush outbox to cloud |
 
+## Security Posture & Boundaries
+
+[![CI](https://github.com/TechAviator200/edgefhir-relay/actions/workflows/ci.yml/badge.svg)](https://github.com/TechAviator200/edgefhir-relay/actions/workflows/ci.yml)
+[![Security](https://github.com/TechAviator200/edgefhir-relay/actions/workflows/security.yml/badge.svg)](https://github.com/TechAviator200/edgefhir-relay/actions/workflows/security.yml)
+[![CodeQL](https://github.com/TechAviator200/edgefhir-relay/actions/workflows/codeql.yml/badge.svg)](https://github.com/TechAviator200/edgefhir-relay/actions/workflows/codeql.yml)
+
+This is a **demo/simulator repository** — not a production EHR deployment. All patient data is synthetic.
+
+**Automated checks** run on every push and pull request:
+- **Gitleaks** — secret scanning
+- **pip-audit** — Python dependency vulnerabilities
+- **Bandit** — Python static security analysis
+- **npm audit** — Node dependency vulnerabilities
+- **CodeQL** — semantic code analysis (Python + JavaScript/TypeScript)
+- **Dependabot** — weekly dependency update PRs
+
+**Out of scope** for this portfolio demo (required for production): HIPAA/SOC 2 compliance controls, cryptographic key management, per-tenant isolation, mTLS, and audit logging. See [docs/security.md](docs/security.md) for the full threat model and hardening roadmap.
+
 ## Project Structure
 
 ```

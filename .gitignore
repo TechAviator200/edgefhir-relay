@@ -1,13 +1,22 @@
+# Python
 .venv/
 __pycache__/
 *.pyc
+
+# Environment / secrets
 .env
 .env.*
+
+# Outbox queue (runtime data, may contain simulated PHI)
+outbox/
+outbox/.quarantine/
+
+# Node / UI
 ui/node_modules/
 ui/.next/
 ui/out/
-ui/.env.local
-ui/.env.production
-ui/tsconfig.tsbuildinfo
+ui/dist/
+*.tsbuildinfo
 
+# OS / editor
 .DS_Store
