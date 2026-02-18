@@ -5,6 +5,9 @@ TRIAGE_TO_PRIORITY = {
     "routine": "routine",
     "urgent": "urgent",
     "critical": "asap",
+    "urgent review": "asap",
+    "watch": "urgent",
+    "ok": "routine",
 }
 
 

@@ -18,10 +18,13 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements-dev.txt
 
       - name: Compile-check Python
         run: python -m compileall app cloud_mock simulator
+
+      - name: Run tests
+        run: pytest tests/
 
   ui:
     name: Next.js UI
