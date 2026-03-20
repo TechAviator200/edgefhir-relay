@@ -1,6 +1,13 @@
 # EdgeFHIR Relay + Triage Agent
 
-A simulated edge-to-cloud healthcare gateway that ingests patient vitals, applies rules-based triage, generates FHIR R4 bundles, and forwards them to a cloud endpoint with offline store-and-forward capability.
+A simulated edge-to-cloud healthcare interoperability agent that ingests patient vitals, applies deterministic triage, generates FHIR R4 bundles, and forwards them to a cloud endpoint with offline store-and-forward resilience.
+
+This project is designed to demonstrate:
+- edge-first clinical signal interpretation
+- healthcare interoperability using FHIR R4 + LOINC
+- resilient device-to-cloud routing
+- product-quality UI/UX for triage visibility
+- an extensible path toward semantic interoperability via JSON-LD / knowledge-graph representations
 
 ## Architecture
 
@@ -40,6 +47,50 @@ cd ui && npm run dev
 - **Store-and-Forward Outbox**: Filesystem-based queue with FIFO ordering, quarantine for malformed payloads, and auto-retry on reconnect
 - **Real-Time Dashboard**: Next.js + Tailwind polling UI with Summary/Structured toggle
 - **Simulation Modes**: Normal, Desat, Fever, Tachy — switchable live via UI or API
+- **Semantic Interoperability Path**: Includes a JSON-LD / linked-data representation example to show how FHIR resources can be projected into graph-native workflows for ontology-aware systems
+
+## Semantic Interoperability Extension (JSON-LD / Knowledge Graph)
+
+Beyond FHIR transport, this project can be represented as a lightweight semantic graph for downstream reasoning, metadata harmonization, and standards alignment.
+
+Why this matters:
+- FHIR is excellent for clinical resource exchange
+- JSON-LD adds graph-native semantics for linked data workflows
+- This becomes useful in life sciences and lab informatics environments where ontology alignment, provenance, and machine-readable relationships matter
+
+### Example: Observation as JSON-LD
+
+```json
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "fhir": "http://hl7.org/fhir/",
+    "loinc": "http://loinc.org/rdf#",
+    "patient": "fhir:Patient/",
+    "device": "fhir:Device/",
+    "observation": "fhir:Observation/"
+  },
+  "@type": "MedicalObservation",
+  "@id": "observation:spo2-001",
+  "identifier": "spo2-001",
+  "code": {
+    "@id": "loinc:59408-5",
+    "name": "Oxygen saturation in Arterial blood by Pulse oximetry"
+  },
+  "subject": {
+    "@id": "patient:patient-001"
+  },
+  "instrument": {
+    "@id": "device:device-ox-001"
+  },
+  "value": {
+    "@type": "QuantitativeValue",
+    "value": 91,
+    "unitText": "%"
+  },
+  "status": "final"
+}
+```
 
 ## System in Action
 
